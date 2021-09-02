@@ -1,0 +1,273 @@
+{
+  "common": {
+    "name": "haier",
+    "version": "1.0.4",
+    "news": {
+      "1.0.4": {
+        "en": "change test",
+        "de": "change test",
+        "ru": "change test",
+        "pt": "change test",
+        "fr": "change test",
+        "nl": "change test"
+      },
+      "1.0.3": {
+        "en": "support admin3\nsupport compact mode\nchange smart to auto\nadded role for state",
+        "de": "support admin3\nsupport compact mode\nchange smart to auto\nadded role for state",
+        "ru": "support admin3\nsupport compact mode\nchange smart to auto\nadded role for state",
+        "pt": "support admin3\nsupport compact mode\nchange smart to auto\nadded role for state",
+        "fr": "support admin3\nsupport compact mode\nchange smart to auto\nadded role for state",
+        "nl": "support admin3\nsupport compact mode\nchange smart to auto\nadded role for state"
+      },
+      "1.0.2": {
+        "en": "fix error",
+        "de": "fix error",
+        "ru": "fix error",
+        "pt": "fix error",
+        "fr": "fix error",
+        "nl": "fix error"
+      }
+    },
+    "title": "Haier air conditioning control",
+    "titleLang": {
+      "en": "ioBroker haier Adapter",
+      "de": "ioBroker Haier Adapter",
+      "ru": "ioBroker Haier драйвер",
+      "pt": "Modelo de adaptador para o ioBroker",
+      "fr": "ioBroker adaptateur modèle",
+      "nl": "ioBroker Haier Adapter",
+      "it": "ioBroker haier Adapter",
+      "es": "ioBroker haier Adapter"
+    },
+    "desc": {
+      "en": "ioBroker haier Adapter",
+      "de": "ioBroker Haier Adapter",
+      "ru": "ioBroker Haier драйвер",
+      "pt": "Modelo de adaptador para o ioBroker",
+      "fr": "ioBroker adaptateur modèle",
+      "nl": "ioBroker Haier Adapter",
+      "it": "ioBroker haier Adapter",
+      "es": "ioBroker haier Adapter"
+    },
+    "platform": "Javascript/Node.js",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "instalator",
+        "email": "vvvalt@mail.ru"
+      }
+    ],
+    "mode": "daemon",
+    "icon": "haier.png",
+    "enabled": false,
+    "materialize": true,
+    "extIcon": "https://raw.githubusercontent.com/instalator/ioBroker.haier/master/admin/haier.png",
+    "keywords": [
+      "haier",
+      "air conditioning",
+      "climate control"
+    ],
+    "readme": "https://github.com/instalator/ioBroker.haier/blob/master/README.md",
+    "loglevel": "info",
+    "type": "climate-control",
+    "installedFrom": "https://github.com/instalator/ioBroker.haier/tarball/master"
+  },
+  "native": {
+    "host": "127.0.0.1",
+    "port": 23
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "role": "indicator.connected",
+        "name": "if connected to Haier",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "temp",
+      "type": "state",
+      "common": {
+        "role": "value.temperature",
+        "name": "current temperature",
+        "desc": "current temperature",
+        "type": "number",
+        "unit": "°C",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "settemp",
+      "type": "state",
+      "common": {
+        "role": "level.temperature",
+        "name": "set temperature",
+        "desc": "set temperature",
+        "type": "number",
+        "unit": "°C",
+        "min": 18,
+        "max": 33,
+        "read": true,
+        "write": true,
+        "def": 18
+      },
+      "native": {}
+    },
+    {
+      "_id": "mode",
+      "type": "state",
+      "common": {
+        "role": "switch.mode.mode",
+        "name": "mode",
+        "desc": "mode",
+        "type": "string",
+        "read": true,
+        "write": true,
+        "def": "Off",
+        "states": {
+          "auto": "Auto",
+          "cool": "Cool",
+          "heat": "Heat",
+          "fan": "Fan",
+          "dry": "Dry",
+          "off": "Off"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "fanspeed",
+      "type": "state",
+      "common": {
+        "role": "switch.mode.fan",
+        "name": "fan speed",
+        "desc": "fan speed",
+        "type": "string",
+        "read": true,
+        "write": true,
+        "def": "Min",
+        "states": {
+          "max": "Max",
+          "mid": "Mid",
+          "min": "Min",
+          "auto": "Auto"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "swing",
+      "type": "state",
+      "common": {
+        "role": "switch.mode.swing",
+        "name": "swing",
+        "desc": "swing",
+        "type": "string",
+        "read": true,
+        "write": true,
+        "def": "off",
+        "states": {
+          "off": "Off",
+          "ud": "Up/Down",
+          "lr": "Left/Right",
+          "both": "Both"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "lockremote",
+      "type": "state",
+      "common": {
+        "role": "switch.mode",
+        "name": "lock remote",
+        "desc": "lock remote",
+        "type": "boolean",
+        "read": true,
+        "write": true,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "fresh",
+      "type": "state",
+      "common": {
+        "role": "switch.mode",
+        "name": "fresh",
+        "desc": "fresh",
+        "type": "boolean",
+        "read": true,
+        "write": true,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "power",
+      "type": "state",
+      "common": {
+        "role": "switch.power",
+        "name": "power",
+        "desc": "power",
+        "type": "boolean",
+        "read": true,
+        "write": true,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "health",
+      "type": "state",
+      "common": {
+        "role": "switch.mode",
+        "name": "health",
+        "desc": "health",
+        "type": "boolean",
+        "read": true,
+        "write": true,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "compressor",
+      "type": "state",
+      "common": {
+        "role": "state",
+        "name": "compressor",
+        "desc": "If the compressor is on",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "raw",
+      "type": "state",
+      "common": {
+        "role": "state",
+        "name": "RAW code",
+        "desc": "RAW code",
+        "type": "string",
+        "read": true,
+        "write": true,
+        "def": false
+      },
+      "native": {}
+    }
+  ]
+}
